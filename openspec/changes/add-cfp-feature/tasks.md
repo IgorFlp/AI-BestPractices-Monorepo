@@ -1,10 +1,10 @@
 ## 1. Backend API Implementation (NestJS)
 
-- [ ] 1.1 Create `CreateSpeakerDto` class implementing `SpeakerDTO` with `class-validator` decorators.
-- [ ] 1.2 Generate NestJS CFP controller (`CfpController`) and module (`CfpModule`) under `api/src/app`.
-- [ ] 1.3 Bind the NestJS validation pipe globally or locally to the controller.
-- [ ] 1.4 Implement validation logic in controller to respond with success when payload is valid.
-- [ ] 1.5 Write Jest unit tests for the controller/endpoint to verify rejection of invalid payloads with HTTP 400.
+- [x] 1.1 Create `CreateSpeakerDto` class implementing `SpeakerDTO` with `class-validator` decorators.
+- [x] 1.2 Generate NestJS CFP controller (`CfpController`) and module (`CfpModule`) under `api/src/app`.
+- [x] 1.3 Bind the NestJS validation pipe globally or locally to the controller.
+- [x] 1.4 Implement validation logic in controller to respond with success when payload is valid.
+- [x] 1.5 Write Jest unit tests for the controller/endpoint to verify rejection of invalid payloads with HTTP 400.
 
 ## 2. Frontend App Implementation (Angular)
 
