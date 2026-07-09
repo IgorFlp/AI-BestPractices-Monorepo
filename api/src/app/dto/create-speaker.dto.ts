@@ -1,9 +1,9 @@
-import { IsNotEmpty, IsEmail, IsString, IsBoolean } from 'class-validator';
+import { IsNotEmpty, IsEmail, IsString, IsBoolean, IsOptional } from 'class-validator';
 import { SpeakerDTO } from '@cfp-plataform/shared-types';
 
 export class CreateSpeakerDto implements SpeakerDTO {
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   id!: string;
 
   @IsString()
