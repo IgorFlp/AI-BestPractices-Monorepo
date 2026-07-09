@@ -13,4 +13,8 @@ export class CfpService {
   submitProposal(proposal: Omit<SpeakerDTO, 'id'> & { id?: string }): Observable<SpeakerDTO> {
     return this.http.post<SpeakerDTO>(this.apiUrl, proposal);
   }
+
+  getProposals(): Observable<SpeakerDTO[]> {
+    return this.http.get<SpeakerDTO[]>(this.apiUrl);
+  }
 }

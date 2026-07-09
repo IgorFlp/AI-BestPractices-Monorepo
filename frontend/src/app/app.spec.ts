@@ -1,20 +1,32 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
-import { NxWelcome } from './nx-welcome';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App, NxWelcome],
+      imports: [App],
+      providers: [provideRouter([])]
     }).compileComponents();
   });
 
-  it('should render title', async () => {
+  it('should render brand logo', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome frontend'
+    expect(compiled.querySelector('.logo')?.textContent).toContain(
+      'Plataforma CFP'
     );
+  });
+
+  it('should render exactly three navigation options', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const navLinks = compiled.querySelectorAll('.nav-link');
+    expect(navLinks.length).toBe(3);
+    expect(navLinks[0].textContent?.trim()).toBe('Cadastros de eventos');
+    expect(navLinks[1].textContent?.trim()).toBe('Cadastro de palestra');
+    expect(navLinks[2].textContent?.trim()).toBe('Dashboard');
   });
 });

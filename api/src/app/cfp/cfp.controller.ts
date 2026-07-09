@@ -1,12 +1,24 @@
-import { Controller, Post, Body, UsePipes, ValidationPipe, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Get, Body, UsePipes, ValidationPipe, HttpCode, HttpStatus } from '@nestjs/common';
 import { CreateSpeakerDto } from '../dto/create-speaker.dto';
 
 @Controller('cfp')
 export class CfpController {
+  private proposals: CreateSpeakerDto[] = [];
+
   @Post()
   @UsePipes(new ValidationPipe())
   @HttpCode(HttpStatus.CREATED)
   create(@Body() createSpeakerDto: CreateSpeakerDto) {
-    return { success: true };
+    const proposal = {
+      ...createSpeakerDto,
+      id: createSpeakerDto.id || Math.random().toString(36).substring(2, 9),
+    };
+    this.proposals.push(proposal);
+    return { success: true, proposal };
+  }
+
+  @Get()
+  findAll() {
+    return this.proposals;
   }
 }
