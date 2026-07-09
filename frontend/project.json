@@ -66,9 +66,11 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@angular/build:unit-test",
+      "executor": "@nx/jest:jest",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "watch": false
+        "jestConfig": "frontend/jest.config.js",
+        "passWithNoTests": true
       }
     },
     "serve-static": {
