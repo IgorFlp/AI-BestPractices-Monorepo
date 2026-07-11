@@ -1,0 +1,31 @@
+{
+  "name": "frontend-cypress-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "frontend-cypress-e2e/src",
+  "implicitDependencies": ["frontend"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "frontend-cypress-e2e/cypress.config.ts",
+        "devServerTarget": "frontend:serve",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "frontend:serve:production"
+        }
+      }
+    },
+    "open-cypress": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "frontend-cypress-e2e/cypress.config.ts",
+        "devServerTarget": "frontend:serve",
+        "testingType": "e2e",
+        "watch": true
+      }
+    }
+  }
+}
